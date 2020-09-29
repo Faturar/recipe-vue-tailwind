@@ -12,18 +12,18 @@
         <!-- Nav -->
         <nav class="flex items-center justify-between bg-blue-600 text-white w-full h-16">
             <div class="flex items-center">
-                <div class="flex items-center ml-16 text-xl font-medium">
+                <div class="flex items-center ml-6 sm:ml-16 text-xl font-medium">
                     Recipeku
                 </div>
             </div>
         </nav>
         <!-- Search -->
         <div class="flex justify-center flex-col items-center bg-green-200 pb-24">
-            <span class="text-3xl pt-16">Find the best recipe around the world</span>
-            <span class="text-lg mt-2 mb-4">Over 40.000+ recipe you can find</span>
+            <span class="text-2xl pt-16 sm:text-3xl">Find the best recipe around the world</span>
+            <span class="text-md sm:text-xl mt-2 mb-4">Over 40.000+ recipe you can find</span>
             <div class="flex w-3/5 h-12">
-                <input type="text" class="w-full h-full px-4 text-xl" v-model="query">
-                <button class="btn bg-blue-500 text-lg text-white w-32" @click="getData()">
+                <input type="text" class="rounded-l sm:w-full sm:h-full h-10 px-4 text-lg sm:text-xl outline-none" v-model="query">
+                <button class="rounded-r btn bg-blue-500 text-md sm:text-lg text-white h-10 w-32 sm:h-12 focus:outline-none" @click="getData()">
                     Search
                 </button>
             </div>
@@ -35,35 +35,35 @@
             <span class="text-xl mt-6 font-medium">Result</span>
             <!-- CARD -->
             <div class="flex flex-wrap justify-around mt-12">
-                <div class="flex flex-col rounded border w-56 my-6 mx-6" v-for="(recipe, index) in recipes" :key="index">
-                    <img :src="`${recipe.recipe.image}`" alt="" class="rounded-t w-56 h-40">
-                    <span class="text-lg p-2">{{ recipe.recipe.label }}</span>
-                    <button class="btn bg-blue-600 text-white h-8 rounded m-2" @click="modal = true, getDataById(index)">Recipe</button>
+                <div class="flex flex-col rounded border w-full sm:w-56 my-6 mx-12 sm:mx-5" v-for="(recipe, index) in recipes" :key="index">
+                    <img :src="`${recipe.recipe.image}`" alt="" class="rounded-t w-full h-56 sm:w-56 sm:h-40">
+                    <span class="text-xl p-4">{{ recipe.recipe.label }}</span>
+                    <button class="btn bg-blue-600 text-white h-8 rounded m-2 focus:outline-none" @click="modal = true, getDataById(index)">Recipe</button>
                 </div>
             </div>    
         </div>
         <div class="flex justify-center">
-            <button v-if="more" class="btn bg-green-500 w-24 h-8 rounded text-white" @click="getData(), next = true">More</button>
+            <button v-if="more" class="btn bg-green-500 w-24 h-8 rounded text-white focus:outline-none" @click="getData(), next = true">More</button>
         </div>
         <!-- Footer -->
         <div class="flex justify-center items-center bg-blue-700 w-full h-16 mt-16">
             <span class="text-white">recipeku &copy; 2020</span>
         </div>
         <div v-if="modal"  class="fixed overflow-x-hidden overflow-y-auto inset-0 flex justify-center items-center z-50">
-            <div class="relative mx-auto w-auto max-w-2xl">
+            <div class="relative mx-auto w-auto max-w-2xl m-16 sm:m-0">
                 <div class="bg-white w-full flex flex-col rounded">
-                    <span class="mx-6 mt-4">Recipe</span>
+                    <span class="text-xl mx-6 mt-4">Recipe</span>
                     <span class="mx-6 mt-4">{{ label }}</span>
                     <ul class="m-6">
                         <li v-for="(ingred, index) in ingredients" :key="index">
-                            {{ index+1 }}. {{ ingred }}
+                            <p>{{ index+1 }}. {{ ingred }}</p>
                         </li>
                     </ul>
-                    <button class="btn bg-blue-700 w-24 h-8 rounded text-white m-6" @click="modal = false">close</button>
+                    <button class="btn bg-blue-700 w-24 h-8 rounded text-white m-6 focus:outline-none" @click="modal = false">close</button>
                 </div>
             </div>
         </div>
-        <div v-if="modal" class="fixed inset-0 z-40 opacity-25 bg-black"></div>
+        <div v-if="modal" class="fixed inset-0 z-40 opacity-50 bg-black"></div>
     </div>
     
     <script src="js/vue.js"></script>
