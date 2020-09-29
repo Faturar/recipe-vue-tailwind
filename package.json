@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "tailwindcss": "^1.8.10"
+    "tailwindcss": "^1.8.10",
+    "vue": "^2.6.12"
   },
   "devDependencies": {},
   "scripts": {
